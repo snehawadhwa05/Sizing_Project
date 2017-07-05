@@ -1,0 +1,219 @@
+<!DOCTYPE html> 
+<!--
+	Author: Sneha Wadhwa
+	Description: Calculate the sizing parameters for WSIL/Bridging systems
+	Built in: June 2017
+-->
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title> Size Calculator-WSIL</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>  
+
+	<style> 
+	input[type=number] 
+	{
+    width: 10%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style> 
+	output[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style>
+	label
+	{
+		font-size: 20px
+	}
+	</style>
+
+	<form id="TakeUserInput">
+        <a href="main_page.html"><img src="Ericsson_logo.jpg" alt="Go to home page" style="float:left;width:120px;height:120px;border:0;"></a>
+		<h2><center> WSIL/Bridging system sizing</center></h2>
+		<h3><center> Enter parameters to calculate size</center></h3>
+		<h4><p>Enter values for Development/Test and Pre production environments:</p></h4>
+        
+		<h5>TIBCO ActiveMatrix BusinessWorks + sFTP Plug-in:</h5>
+        <label>Number of VM's per server </label><input id="TACBWN" type="number" size="20"> <label>Cores per VM </label><input id="TACBWC" type="number" size="20" required> <label>GB's per VM </label><input id="TACBWG" type="number" size="20" required><br>
+		<h5>TIBCO Enterprise Message Service Server :</h5>
+        <label>Number of VM's per server </label><input id="TEMSSN" type="number" size="20"> <label>Cores per VM </label><input id="TEMSSC" type="number" size="20" required> <label>GB's per VM </label><input id="TEMSSG" type="number" size="20" required><br>
+		<h5>TIBCO ActiveMatrix Policy Director:</h5>
+        <label>Number of VM's per server </label><input id="TACPDN" type="number" size="20"> <label>Cores per VM </label><input id="TACPDC" type="number" size="20" required> <label>GB's per VM </label><input id="TACPDG" type="number" size="20" required><br>
+		<h5>TIBCO BusinessEvents Enterprise Bundle:</h5>
+        <label>Number of VM's per server </label><input id="TBEEBN" type="number" size="20"> <label>Cores per VM </label><input id="TBEEBC" type="number" size="20" required> <label>GB's per VM </label><input id="TBEEBG" type="number" size="20" required><br>
+		<h5>TIBCO ActiveMatrix BPM:</h5>
+        <label>Number of VM's per server </label><input id="TAMBPMN" type="number" size="20"> <label>Cores per VM </label><input id="TAMBPMC" type="number" size="20" required> <label>GB's per VM </label><input id="TAMBPMG" type="number" size="20" required><br>
+        <h5>TIBCO API Exchange:</h5>
+        <label>Number of VM's per server </label><input id="TAPIEN" type="number" size="20"> <label>Cores per VM </label><input id="TAPIEC" type="number" size="20" required> <label>GB's per VM </label><input id="TAPIEG" type="number" size="20" required><br>
+		<h5>TIBCO Hawk:</h5>
+        <label>Number of VM's per server </label><input id="THAWKN" type="number" size="20"> <label>Cores per VM </label><input id="THAWKC" type="number" size="20" required> <label>GB's per VM </label><input id="THAWKG" type="number" size="20" required><br>
+		<h5>TIBCO ActiveMatrix BPM Spotfire Add-on Bundle:</h5>
+        <label>Number of VM's per server </label><input id="TAMBPMADDN" type="number" size="20"> <label>Cores per VM </label><input id="TAMBPMADDC" type="number" size="20" required> <label>GB's per VM </label><input id="TAMBPMADDG" type="number" size="20" required><br>
+        <h5>TIBCO Admin :</h5>
+        <label>Number of VM's per server </label><input id="TADMINN" type="number" size="20"> <label>Cores per VM </label><input id="TADMINC" type="number" size="20" required> <label>GB's per VM </label><input id="TADMING" type="number" size="20" required><br>
+		<h5>TIBCO ActiveMatrix Lifecycle Governance Framework:</h5>
+        <label>Number of VM's per server </label><input id="LGFRAMEN" type="number" size="20"> <label>Cores per VM </label><input id="LGFRAMEC" type="number" size="20" required> <label>GB's per VM </label><input id="LGFRAMEG" type="number" size="20" required><br>
+        <h5>TIBCO ActiveMatrix Lifecycle Governance Registry Foundation:</h5>
+        <label>Number of VM's per server </label><input id="LGREGFN" type="number" size="20"> <label>Cores per VM </label><input id="LGREGFC" type="number" size="20" required> <label>GB's per VM </label><input id="LGREGFG" type="number" size="20" required><br>
+        <h5>Database :</h5>
+        <label>Number of VM's per server </label><input id="DBN" type="number" size="20"> <label> Cores per VM </label><input id="DBC" type="number" size="20" required> <label>GB's per VM </label><input id="DBG" type="number" size="20" required><br>
+
+
+
+
+        <h4><p>Enter values for Disaster Recovery and Production environments:</p></h4>
+
+        <h5>TIBCO ActiveMatrix BusinessWorks + sFTP Plug-in:</h5>
+        <label>Number of VM's per server</label> <input id="PTACBWN" type="number" size="20"> <label>Cores per VM </label><input id="PTACBWC" type="number" size="20" required> <label>GB's per VM </label><input id="PTACBWG" type="number" size="20" required></label><br>
+		<h5>TIBCO Enterprise Message Service Server :</h5>
+        <label>Number of VM's per server</label> <input id="PTEMSSN" type="number" size="20"> <label>Cores per VM </label><input id="PTEMSSC" type="number" size="20" required> <label>GB's per VM </label><input id="PTEMSSG" type="number" size="20" required></label><br>
+		<h5>TIBCO ActiveMatrix Policy Director:</h5>
+        <label>Number of VM's per server</label> <input id="PTACPDN" type="number" size="20"> <label>Cores per VM </label><input id="PTACPDC" type="number" size="20" required> <label>GB's per VM </label><input id="PTACPDG" type="number" size="20" required></label><br>
+		<h5>TIBCO BusinessEvents Enterprise Bundle:</h5>
+        <label>Number of VM's per server</label> <input id="PTBEEBN" type="number" size="20"> <label>Cores per VM </label><input id="PTBEEBC" type="number" size="20" required> <label>GB's per VM </label><input id="PTBEEBG" type="number" size="20" required></label><br>
+		<h5>TIBCO ActiveMatrix BPM:</h5>
+        <label>Number of VM's per server</label> <input id="PTAMBPMN" type="number" size="20"> <label>Cores per VM </label><input id="PTAMBPMC" type="number" size="20" required> <label>GB's per VM </label><input id="PTAMBPMG" type="number" size="20" required></label><br>
+        <h5>TIBCO API Exchange:</h5>
+        <label>Number of VM's per server</label> <input id="PTAPIEN" type="number" size="20"> <label>Cores per VM </label><input id="PTAPIEC" type="number" size="20" required> <label>GB's per VM </label><input id="PTAPIEG" type="number" size="20" required></label><br>
+		<h5>TIBCO Hawk:</h5>
+        <label>Number of VM's per server</label> <input id="PTHAWKN" type="number" size="20"> <label>Cores per VM </label><input id="PTHAWKC" type="number" size="20" required> <label>GB's per VM </label><input id="PTHAWKG" type="number" size="20" required></label><br>
+		<h5>TIBCO ActiveMatrix BPM Spotfire Add-on Bundle:</h5>
+        <label>Number of VM's per server</label> <input id="PTAMBPMADDN" type="number" size="20"> <label>Cores per VM </label><input id="PTAMBPMADDC" type="number" size="20" required> <label>GB's per VM </label><input id="PTAMBPMADDG" type="number" size="20" required></label><br>
+        <h5>TIBCO Admin :</h5>
+        <label>Number of VM's per server</label> <input id="PTADMINN" type="number" size="20"> <label>Cores per VM </label><input id="PTADMINC" type="number" size="20" required> <label>GB's per VM </label><input id="PTADMING" type="number" size="20" required></label><br>
+		<h5>TIBCO ActiveMatrix Lifecycle Governance Framework:</h5>
+        <label>Number of VM's per server</label> <input id="PLGFRAMEN" type="number" size="20"> <label>Cores per VM </label><input id="PLGFRAMEC" type="number" size="20" required> <label>GB's per VM </label><input id="PLGFRAMEG" type="number" size="20" required></label><br>
+        <h5>TIBCO ActiveMatrix Lifecycle Governance Registry Foundation:</h5>
+        <label>Number of VM's per server</label> <input id="PLGREGFN" type="number" size="20"> <label>Cores per VM </label><input id="PLGREGFC" type="number" size="20" required> <label>GB's per VM </label><input id="PLGREGFG" type="number" size="20" required></label><br>
+        <h5>Database :</h5>
+        <label>Number of VM's per server</label> <input id="PDBN" type="number" size="20"> <label>Cores per VM </label><input id="PDBC" type="number" size="20" required> <label>GB's per VM </label><input id="PDBG" type="number" size="20" required></label><br>
+
+
+
+
+		<center><input type="button" onclick="Calculate_Size()" value="Calculate Size">  <input type="button" onclick="Reset_Function()" value="Reset"></center>
+		
+		<h2><p><center> Result:</center></p></h2> 
+
+        <h4><p><center> The Development, Test and Pre production Environments are identical.</center></p></h4> 
+		
+		<h4><p id="DEV">Result for Development, Test and Pre production Environments are below:</p></h4>
+
+        <h5>TIBCO ActiveMatrix BusinessWorks + sFTP Plug-in:</h5>
+        <label>Total cores per server : </label><output type="text" name="TACBWTC" id="TACBWTC"></output> <label>Total GB's per server : </label><output type="text" name="TACBWTG" id="TACBWTG"></output><br>
+		<h5>TIBCO Enterprise Message Service Server :</h5>
+        <label>Total cores per server : </label><output type="text" name="TEMSSTC" id="TEMSSTC"></output> <label>Total GB's per server : </label><output type="text" name="TEMSSTG" id="TEMSSTG"></output><br>
+		<h5>TIBCO ActiveMatrix Policy Director:</h5>
+        <label>Total cores per server : </label><output type="text" name="TACPDTC" id="TACPDTC"></output> <label>Total GB's per server : </label><output type="text" name="TACPDTG" id="TACPDTG"></output><br>
+		<h5>TIBCO BusinessEvents Enterprise Bundle:</h5>
+        <label>Total cores per server : </label><output type="text" name="TBEEBTC" id="TBEEBTC"></output> <label>Total GB's per server : </label><output type="text" name="TBEEBTG" id="TBEEBTG"></output><br>
+		<h5>TIBCO ActiveMatrix BPM:</h5>
+        <label>Total cores per server : </label><output type="text" name="TAMBPMTC" id="TAMBPMTC"></output> <label>Total GB's per server : </label><output type="text" name="TAMBPMTG" id="TAMBPMTG"></output><br>
+        <h5>TIBCO API Exchange:</h5>
+        <label>Total cores per server : </label><output type="text" name="TAPIETC" id="TAPIETC"></output> <label>Total GB's per server : </label><output type="text" name="TAPIETG" id="TAPIETG"></output><br>
+		<h5>TIBCO Hawk:</h5>
+        <label>Total cores per server : </label><output type="text" name="THAWKTC" id="THAWKTC"></output> <label>Total GB's per server : </label><output type="text" name="THAWKTG" id="THAWKTG"></output><br>
+		<h5>TIBCO ActiveMatrix BPM Spotfire Add-on Bundle:</h5>
+        <label>Total cores per server : </label><output type="text" name="TAMBPMADDTC" id="TAMBPMADDTC"></output> <label>Total GB's per server : </label><output type="text" name="TAMBPMADDTG" id="TAMBPMADDTG"></output><br>
+        <h5>TIBCO Admin :</h5>
+        <label>Total cores per server : </label><output type="text" name="TADMINTC" id="TADMINTC"></output> <label>Total GB's per server : </label><output type="text" name="TADMINTG" id="TADMINTG"></output><br>
+		<h5>TIBCO ActiveMatrix Lifecycle Governance Framework:</h5>
+        <label>Total cores per server : </label><output type="text" name="LGFRAMETC" id="LGFRAMETC"></output> <label>Total GB's per server : </label><output type="text" name="LGFRAMETG" id="LGFRAMETG"></outputt><br>
+        <h5>TIBCO ActiveMatrix Lifecycle Governance Registry Foundation:</h5>
+        <label>Total cores per server : </label><output type="text" name="LGREGFTC" id="LGREGFTC"></output> <label>Total GB's per server : </label><output type="text" name="LGREGFTG" id="LGREGFTG"></output><br>
+        <h5>Database :</h5>
+        <label>Total cores per server : </label><output type="text" name="DBTC" id="DBTC"></output> <label>Total GB's per server : </label><output type="text" name="DBTG" id="DBTG"></output><br>
+
+
+       
+        <h4><p><center> The Disaster Recovery and the Production Environments are identical.</center></p></h4> 
+		<h4><p= id="PROD"> Result for Disaster Recovery and Production Environments are below:</p></h4>
+		
+        <h5>TIBCO ActiveMatrix BusinessWorks + sFTP Plug-in:</h5>
+        <label>Total cores per server : </label><output type="text" name="PTACBWTC" id="PTACBWTC"></output> <label>Total GB's per server :</label><output type="text" name="PTACBWTG" id="PTACBWTG"></output><br>
+		<h5>TIBCO Enterprise Message Service Server :</h5>
+        <label>Total cores per server :</label><output type="text" name="PTEMSSTC" id="PTEMSSTC"></output> <label>Total GB's per server :</label><output type="text" name="PTEMSSTG" id="PTEMSSTG"></output><br>
+		<h5>TIBCO ActiveMatrix Policy Director:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTACPDTC" id="PTACPDTC"></output> <label>Total GB's per server :</label><output type="text" name="PTACPDTG" id="PTACPDTG"></output><br>
+		<h5>TIBCO BusinessEvents Enterprise Bundle:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTBEEBTC" id="PTBEEBTC"></output> <label>Total GB's per server :</label><output type="text" name="PTBEEBTG" id="PTBEEBTG"></output><br>
+		<h5>TIBCO ActiveMatrix BPM:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTAMBPMTC" id="PTAMBPMTC"></output> <label>Total GB's per server :</label><output type="text" name="PTAMBPMTG" id="PTAMBPMTG"></output><br>
+        <h5>TIBCO API Exchange:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTAPIETC" id="PTAPIETC"></output> <label>Total GB's per server :</label><output type="text" name="PTAPIETG" id="PTAPIETG"></output><br>
+		<h5>TIBCO Hawk:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTHAWKTC" id="PTHAWKTC"></output> <label>Total GB's per server :</label><output type="text" name="PTHAWKTG" id="PTHAWKTG"></output><br>
+		<h5>TIBCO ActiveMatrix BPM Spotfire Add-on Bundle:</h5>
+        <label>Total cores per server :</label><output type="text" name="PTAMBPMADDTC" id="PTAMBPMADDTC"></output> <label>Total GB's per server :</label><output type="text" name="PTAMBPMADDTG" id="PTAMBPMADDTG"></output><br>
+        <h5>TIBCO Admin :</h5>
+        <label>Total cores per server :</label><output type="text" name="PTADMINTC" id="PTADMINTC"></output> <label>Total GB's per server :</label><output type="text" name="PTADMINTG" id="PTADMINTG"></output><br>
+		<h5>TIBCO ActiveMatrix Lifecycle Governance Framework:</h5>
+        <label>Total cores per server :</label><output type="text" name="PLGFRAMETC" id="PLGFRAMETC"></output> <label>Total GB's per server :</label><output type="text" name="PLGFRAMETG" id="PLGFRAMETG"></output><br>
+        <h5>TIBCO ActiveMatrix Lifecycle Governance Registry Foundation:</h5>
+        <label>Total cores per server :</label><output type="text" name="PLGREGFTC" id="PLGREGFTC"></output> <label>Total GB's per server :</label><output type="text" name="PLGREGFTG" id="PLGREGFTG"></output><br>
+        <h5>Database :</h5>
+        <label>Total cores per server :</label><output type="text" name="PDBTC" id="PDBTC"></output> <label>Total GB's per server :</label><output type="text" name="PDBTG" id="PDBTG"></output><br>
+
+        
+        <h3><p><center>Summary</center></p></h3> 
+		<h4><p= id="SUMM"> Result for Sizing WSIL servers is below:</p></h4>
+
+        <h5>Development/Test Server/Pre Production Servers</h5>
+        <label>Number of servers in each environment : 2 </label><br>
+        <label>Server 1 configuration :</label><output type="text" name="DEVGB1" id="DEVGB1"><label> GB </label></output><output type="text" name="DEVCORE1" id="DEVCORE1"><label> CORES </label></output><br>
+        <label>Server 2 configuration :</label><output type="text" name="DEVGB2" id="DEVGB2"><label> GB </label></output><output type="text" name="DEVCORE2" id="DEVCORE2"><label> CORES </label></output><br>
+        
+
+        <h5>Disaster Recovery/Production Servers</h5>
+        <label>Number of servers in each environment : 4 </label><br>
+        <label>Server 1 configuration :</label><output type="text" name="PRODGB1" id="PRODGB1"><label> GB </label></output><output type="text" name="PRODCORE1" id="PRODCORE1"><label> CORES </label></output><br>
+        <label>Server 2 configuration :</label><output type="text" name="PRODGB2" id="PRODGB2"><label> GB </label><label></output><output type="text" name="PRODCORE2" id="PRODCORE2"><label> CORES </label></output><br>
+        <label>Server 3 configuration :</label><output type="text" name="PRODGB3" id="PRODGB3"><label> GB </label></output><output type="text" name="PRODCORE3" id="PRODCORE3"><label> CORES </label></output><br>
+        <label>Server 4 configuration :</label><output type="text" name="PRODGB4" id="PRODGB4"><label> GB </label></output><output type="text" name="PRODCORE4" id="PRODCORE4"><label> CORES </label></output><br>
+       
+
+        <h5>Total configuration</h5>
+        <label>Number of servers : 14 </label><br>
+        <label>Development/Test/Pre Production Server Configuration :</label><output type="text" name="MAXDEVGB" id="MAXDEVGB"><label> GB </label></output><output type="text" name="MAXDEVCORE" id="MAXDEVCORE"><label> CORES </label></output><br>
+        <label>Disaster Recovery/Production Server Configuration :</label><output type="text" name="MAXPRODGB" id="MAXPRODGB"><label> GB </label></output><output type="text" name="MAXPRODCORE" id="MAXPRODCORE"><label> CORES </label></output><br>
+        
+        <!--
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th> Value</th>
+            </tr>
+            <tr>
+                <td>Number of servers in each environment </td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td> Server 1 configuration </td>
+                <td><output type="text" name="DEVGB1" id="DEVGB1"></output></td>
+
+            </tr>
+
+        </table>
+        -->
+
+
+	</form>   
+
+
+<script src="code_WSIL.js"></script> 
+</body> 
+</html> 

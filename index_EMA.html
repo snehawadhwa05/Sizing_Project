@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title> Size Calculator-EMA</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>  
+
+	<style> 
+	input[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style> 
+	output[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style>
+	label
+	{
+		font-size: 20px
+	}
+	</style>
+
+	<form id="TakeUserInput">
+		<a href="main_page.html"><img src="Ericsson_logo.jpg" alt="Go to home page" style="float:left;width:120px;height:120px;border:0;"></a>
+		<h2><center> EMA System Sizing</center></h2>
+        <h3><center> Enter parameters to calculate size</center></h3>
+		
+		<br><label>Total orders per day: </label><input id="ORD" type="number" size="20" required ><br>
+		<label>Average CSO/s for complex use case per node: </label><input id="AVGCSO" type="number" size="20" required><br>
+		<label>Average log size in bytes: </label><input id="AVGLOG" type="number" size="20" required><br>
+		<label>Required days of storage: </label><input id="DAYSTORE" type="number" size="20" required><br>
+		
+
+		<center><input type="button" onclick="Calculate_Size()" value="Calculate Size"> <input type="button" onclick="Reset_Function()" value="Reset"></center>
+
+		<h2><p><center> Result:</center></p></h2> 
+		
+		<label>Required Throughput (CSO/s) : </label><output type="number" name="THROUGHPUT" id="THROUGHPUT"></output><br>
+		<label>Required Throughput to cater to 5 times the traffic during busy peak hour (CSO/s) : </label><output type="number" name="FIVETHR" id="FIVETHR"></output><br>
+		<label>Total VM's : </label><output type="number" name="TOTVM" id="TOTVM"></output><br>
+        <label>Total VM's considering 20% margin : </label><output type="number" name="TOTVM20" id="TOTVM20"></output><br>
+		<label>Required log size per day in GB : </label><output type="number" name="LOGSIZE" id="LOGSIZE"></output><br>
+		<label>Total block storage for provisioning log with 30% additional capacity in GB : </label><output type="number" name="TOTSTORE" id="TOTSTORE"></output><br>
+		
+        
+
+	</form>   
+
+
+<script src="code_EMA.js"></script> 
+</body> 
+</html> 

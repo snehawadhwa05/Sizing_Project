@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title> Size Calculator-EPCOMON</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>  
+
+	<style> 
+	input[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style> 
+	output[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style>
+	label
+	{
+		font-size: 20px
+	}
+	</style>
+
+	<form id="TakeUserInput">
+		<a href="main_page.html"><img src="Ericsson_logo.jpg" alt="Go to home page" style="float:left;width:120px;height:120px;border:0;"></a>
+		<h2><center> EPCOMON System Sizing</center></h2>
+        <h3><center> Enter parameters to calculate size</center></h3>
+		
+		<br><label>Customer orders per month: </label><input id="CUSORD" type="number" size="20" required ><br>
+		<label>Number of catalog items: </label><input id="CATITEMS" type="number" size="20" required><br>
+		<label>EOC peak concurrent UI users: </label><input id="EOCPEAK" type="number" size="20" required><br>
+		<label>ECM peak concurrent UI users: </label><input id="ECMPEAK" type="number" size="20" required><br>
+		<label>Historical order retention period: </label><input id="ORDRET" type="number" size="20" required><br>
+		<label>Number of external systems involved while processing an order: </label><input id="EXTSYS" type="number" size="20" required><br>
+		<label>Average order lifecycle duration: </label><input id="ORDDUR" type="number" size="20" required><br>
+		<label>Number of customers: </label><input id="CUSTOMER" type="number" size="20" required><br>
+		<label>Decomposition: </label><input id="DECOMP" type="number" size="20" required><br>
+		<label>Number of products per order: </label><input id="PROD" type="number" size="20" required><br>
+		<label>Number of Services: </label><input id="SERV" type="number" size="20" required><br>
+		<label>Average working hours per day: </label><input id="HRSPERDAY" type="number" size="20" required><br>
+		<label>Average working hours per month: </label><input id="HRSPERMONTH" type="number" size="20" required><br>
+		<label>Average number of activities per process: </label><input id="ACTPERPROC" type="number" size="20" required><br>
+		<label>ECM PLM number of activities: </label><input id="ECMPLMACT" type="number" size="20" required><br>
+		<label>Percentage increase in customer base: </label><input id="INCCUST" type="number" size="20" required><br>
+		<label>Percentage of catalog volume increase in future: </label><input id="INCCAT" type="number" size="20" required><br>
+		<label>Peak orders per month: </label><input id="PEAKORD" type="number" size="20" required><br>
+		<label>API messages per core per sec: </label><input id="APIMSG" type="number" size="20" required><br>
+		<label>API calls to IWS per core per sec: </label><input id="APICALL" type="number" size="20" required><br>
+        <label>API calls to ECM per core per sec: </label><input id="APIECMCORE" type="number" size="20" required><br>
+		<label>PE Activities per core per sec: </label><input id="PEACT" type="number" size="20" required><br>
+		<label>Average Element size (Order/Product): </label><input id="AVGELE" type="number" size="20" required><br>
+		<label>Average size of attachment in KB: </label><input id="AVGATT" type="number" size="20" required><br>
+		<label>Size of customer record: </label><input id="RECSIZE" type="number" size="20" required><br>
+        <label>Metadata size in MB: </label><input id="METASIZE" type="number" size="20" required><br>
+		<label>Process table cache in MB: </label><input id="PROTABCACHE" type="number" size="20" required><br>
+		<label>Activity cache size in MB: </label><input id="ACTCACHESIZE" type="number" size="20" required><br>
+		<label>Process data cache size in MB: </label><input id="PRODATACACHE" type="number" size="20" required><br>
+		<label>Dynamic participant size in MB: </label><input id="DYPARSIZE" type="number" size="20" required><br>
+		<label>Number of records in interface data cache: </label><input id="RECINTDATA" type="number" size="20" required><br>
+		<label>Decomposition of order: </label><input id="DECOMPORD" type="number" size="20" required><br>
+		<label>Sum of dafault confiuration cache space in system configuration application: </label><input id="SUM" type="number" size="20" required><br>
+		
+
+		<center><input type="button" onclick="Calculate_Size()" value="Calculate Size"> <input type="button" onclick="Reset_Function()" value="Reset"></center>
+
+		<h2><p><center> Result:</center></p></h2> 
+		
+		<h4><p id="HW">Result for Hardware</p></h4>
+		<label>Process Cache:</label><output type="number" name="PROCACHE" id="PROCACHE"></output><br>
+		<label>Activity Cache:</label><output type="number" name="ACTCACHE" id="ACTCACHE"></output><br>
+		<label>Process Data Cache:</label><output type="number" name="DATACACHE" id="DATACACHE"></output><br>
+        <label>Dynamic Participant Cache:</label><output type="number" name="DYPARCACHE" id="DYPARCACHE"></output><br>
+		<label>Interface Data Cache:</label><output type="number" name="INTDATACACHE" id="INTDATACACHE"></output><br>
+		<label>PE Memory:</label><output type="number" name="PEMEM" id="PEMEM"></output><br>
+		<label>UI Memory:</label><output type="number" name="UIMEM" id="UIMEM"></output><br>
+        <label>Total Order Size:</label><output type="number" name="ORDERS" id="ORDERS"></output><br>
+		<label>Processing Size:</label><output type="number" name="PROCESSS" id="PROCESSS"></output><br>
+		<label>Total DB Size:</label><output type="number" name="DBSIZE" id="DBSIZE"></output><br>
+        <label>DB space for Customer Information Registry(CIR):</label><output type="number" name="DBCIR" id="DBCIR"></output><br>
+		<label>DB space for Service Registry(SR):</label><output type="number" name="DBSR" id="DBSR"></output><br>
+	
+
+		<h4><p id="EOC"> Result for EOC (ON/OM)</p></h4>
+		<label>Application PE CPU cores:</label><output type="number" name="PEEOC" id="PEEOC"></output><br>
+		<label>Application API CPU cores:</label><output type="number" name="APIEOC" id="APIEOC"></output><br>
+		<label>DB cores:</label><output type="number" name="DBEOC" id="DBEOC"></output><br>
+
+		<h4><p id="ECM">Result for ECM</p></h4>
+		<label>Application PE CPU cores:</label><output type="number" name="PEECM" id="PEECM"></output><br>
+		<label>Application API CPU cores:</label><output type="number" name="APIECM" id="APIECM"></output><br>
+		<label>DB cores:</label><output type="number" name="DBECM" id="DBECM"></output><br>
+
+		<h4><p= id="IWS"> Result for IWS</p></h4>
+		<label>CPU cores:</label><output type="number" name="CPUIWS" id="CPUIWS"></output><br>
+		
+
+	</form>   
+
+
+<script src="code_EPCOMON.js"></script> 
+</body> 
+</html> 

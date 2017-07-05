@@ -1,0 +1,201 @@
+<!DOCTYPE html> 
+<!--
+	Author: Sneha Wadhwa
+	Description: Calculate the sizing parameters for F-EMM systems
+	Built in: June 2017
+-->
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title> Size Calculator-FEMM</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>  
+
+	<style> 
+	input[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style> 
+	output[type=number] 
+	{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	}
+	</style>
+
+	<style>
+	label
+	{
+		font-size: 20px
+	}
+
+	</style>
+
+
+	<form id="TakeUserInput">
+		<a href="main_page.html"><img src="Ericsson_logo.jpg" alt="Go to home page" style="float:left;width:120px;height:120px;border:0;"></a>
+		<h2><center> F-EMM system sizing</center></h2>
+		<h3><center> Enter parameters to calculate size</center></h3>
+		<h4><p>Enter Values for Hardware:</p></h4>
+		<label>Archive incoming days(in days): </label><input id="ARCINC" type="number" size="20" required><br>
+		<label>Compression ratio for archive: </label><input id="COMPR" type="number" size="20" required><br>
+		<label>Inbuffer days: </label><input id="BUFF" type="number" size="20" required><br>
+		<label>Average CDR size in bytes: </label><input id="CDRSIZE" type="number" size="20" required><br>
+		<label>Raid 1+0 factor: </label><input id="RAID" type="number" size="20" required><br>
+		<label>Number of CDR's generated in duplicate detection window: </label><input id="NOCDRDUP" type="number" size="20" required><br>
+		<label>Number of partial DR's to be stored in consolidation window: </label><input id="NODRCON" type="number" size="20" required><br>
+		<label>Average size of DR's for consolidation: </label><input id="DRSIZE" type="number" size="20" required><br>
+		<label>Size of table in memory in MBytes(For memory) : </label><input id="TABSIZE" type="number" size="20" required><br>
+		<label>Required Hardware RAM in GBytes: </label><input id="RAMSIZE" type="number" size="20" required><br>
+
+		<h4><p>Enter common values:</p></h4>
+		<label>MM Processing time in hours: </label><input id="MMHOURS" type="number" size="20" required><br>
+		<label>Additional load during busy hour in percentage: </label><input id="ADDLOAD" type="number" size="20" required><br>
+		<label>EMM application storage in GBytes: </label><input id="EMMSTORE1" type="number" size="20" required><br>
+		<label>Spare storage in GBytes: </label><input id="SPARESTORE1" type="number" size="20" required><br>
+
+		<h4><p>Enter values for circuit switching</p></h4>
+		<label>Number of CDR's per call in Circuit switching: </label><input id="CDRPERCALL" type="number" size="20" required><br>
+		<label>Number of calls per subscriber per day: </label><input id="CALLCOUNT" type="number" size="20" required><br>
+		<label>Number of sms per subscriber per day in circuit switching: </label><input id="SMSCOUNT" type="number" size="20" required><br>
+		<label>CDR size per voice call in Bytes in circuit switching: </label><input id="SIZEPERCALLCS" type="number" size="20" required><br>
+		<label>CDR size per SMS in bytes in circuit switching: </label><input id="SIZEPERSMSCS" type="number" size="20" required><br>
+		<label>Number of subscribers in circuit switching: </label><input id="SUBSCOUNTCS" type="number" size="20" required><br>
+		
+		<h4><p>Enter value for Service network</p></h4>
+		<label>Number of CDR's per subcribers per day in service networks: </label><input id="CDRPERSUBS" type="number" size="20" required><br>
+		<label>CDR size in bytes in Service networks: </label><input id="CDRSIZE" type="number" size="20" required><br>
+		<label>Number of subscribers in Service Network: </label><input id="SUBSCOUNTSN" type="number" size="20" required><br>
+
+		<h4><p>Enter values for packet switching</p></h4>
+		<label>Percentage of attached subscribers: </label><input id="ATTSUBS" type="number" size="20" required><br>
+		<label>Percentage of active subscribers: </label><input id="ACTSUBS" type="number" size="20" required><br>
+		<label>Simultaneous PDP per subscriber: </label><input id="PDPSUBS" type="number" size="20" required><br>
+		<label>CDR per hour in packet switching: </label><input id="CDRPERHR" type="number" size="20" required><br>
+		<label>Number of SMS per subscriber per day in packet switching: </label><input id="SMSCOUNTPS" type="number" size="20" required><br>
+		<label>CDR size in bytes in PDP: </label><input id="SIZEPDP" type="number" size="20" required><br>
+		<label>CDR size in bytes for SMS in packet switching: </label><input id="CDRSIZEPERSMSMPS" type="number" size="20" required><br>
+		<label>Number of subscribers in packet switching: </label><input id="SUBSCOUNTPS" type="number" size="20" required><br>
+		<br>
+
+
+		<h4><p>Enter values to calculate the blades</p></h4>
+
+		<label>Simple File Transfer Feeds (Source TMO): </label><input id="FTFTMO" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Simple File Transfer Feeds (Source TMO) in KBytes per day: </label><input id="FTFTMOTOT" type="number" size="20" required><br>
+
+		<label>Simple File Transfer Feeds (Source Ericsson/AuxDB Fraud/RA/Data Stash): </label><input id="FTFRA" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Simple File Transfer Feeds (Source Ericsson/AuxDB Fraud/RA/Data Stash) in KBytes per day: </label><input id="FTFRATOT" type="number" size="20" required><br>
+
+		<label>Simple File Transfer Feeds (Source Ericsson/AuxDB RSL): </label><input id="FTFRSL" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Simple File Transfer Feeds (Source Ericsson/AuxDB RSL) in KBytes per day: </label><input id="FTFRSLTOT" type="number" size="20" required><br>
+
+		<label>Source Ericsson (OM Fraud)/Case Management: </label><input id="CMERIC" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Source Ericsson (OM Fraud)/Case Management in KBytes per day: </label><input id="CMERICTOT" type="number" size="20" required><br>
+
+		<label>Simple File Transfer Feeds (Source Ericsson): </label><input id="FTFERIC" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Simple File Transfer Feeds (Source Ericsson) in KBytes per day: </label><input id="FTFERICTOT" type="number" size="20" required><br>
+
+		<label>Feeds required decoding/processing (Source TMO/Assurant files): </label><input id="FRD" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Feeds required decoding/processing (Source TMO/Assurant files) in KBytes per day: </label><input id="FRDTOT" type="number" size="20" required><br>
+
+		<label>Event and Notification Feeds: </label><input id="EVNOTIF" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Event and Notification Feeds in KBytes per day: </label><input id="EVNOTIFTOT" type="number" size="20" required><br>
+
+		<label>Submit Order Feeds(Source TMO-->Targer OM): </label><input id="SOFTMO" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Submit Order Feeds(Source TMO-->Targer OM) in KBytes per day: </label><input id="SOFTMOTOT" type="number" size="20" required><br>
+
+		<label>Submit Order Feeds(Source Ericsson-->Targer OM): </label><input id="SOFERIC" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Submit Order Feeds(Source Ericsson-->Targer OM) in KBytes per day: </label><input id="SOFERICTOT" type="number" size="20" required><br>
+
+		<label>MBC (Source Ericsson-->Targer OM/ESP): </label><input id="MBC" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for MBC (Source Ericsson-->Targer OM/ESP) in KBytes per day: </label><input id="MBCTOT" type="number" size="20" required><br>
+
+		<label>Hawkeye/EMA collection/distribution: </label><input id="HAWK" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for Hawkeye/EMA collection/distribution in KBytes per day: </label><input id="HAWKTOT" type="number" size="20" required><br>
+
+		<label>SAP-C Case Management Events: </label><input id="SAPC" type="number" size="20" required><br>
+		<label>Sum of affecting paramenters for SAP-C Case Management Events in KBytes per day: </label><input id="SAPCTOT" type="number" size="20" required><br>
+
+
+		<center><input type="button" onclick="Calculate_Size()" value="Calculate Size">  <input type="button" onclick="Reset_Function()" value="Reset" required></center>
+		
+		<h2><p><center> Result:</center></p></h2> 
+		
+		<h4><p id="CS">Result for Circuit Switching</p></h4>
+		<label>CDR's per day:</label><output type="text" name="CDRDAYCS" id="CDRDAYCS"></output><br>
+		<label>For EMM 8.x Peak kB/s :</label><output type="text" name="PEAKEMM8CS" id="PEAKEMM8CS"></output><br>
+
+		<h4><p id="PS"> Result for Packet Switching</p></h4>
+		<label>CDR's per day:</label><output type="text" name="CDRDAYPS" id="CDRDAYPS"></output><br>
+		<label>For EMM 8.x kB/s:</label><output type="text" name="PEAKEMM8PS" id="PEAKEMM8PS"></output><br>
+
+		<h4><p id="SN">Result for Service Network</p></h4>
+		<label>CDR's per day:</label><output type="text" name="CDRDAYSN" id="CDRDAYSN"></output><br>
+		<label>For EMM 8.x kB/s:</label><output type="text" name="PEAKEMM8SN" id="PEAKEMM8SN"></output><br>
+
+		<h4><p= id="TOTAL"> Result for Throughput</p></h4>
+		<label>Total CDR's per day:</label><output type="text" name="TOTCDRDAY" id="TOTCDRDAY"></output><br>
+		<label>For EMM 8.x Total kB/s:</label><output type="text" name="TOTPEAKEMM8" id="TOTPEAKEMM8"></output><br>
+
+		<h4><p id="RAM">Result for RAM</p></h4>
+		<label>Architecture Based Requirement in MBytes:</label><output type="text" name="ARCHREQ" id="ARCHREQ"></output><br>
+		<label>Logic Based Requirement in MBytes:</label><output type="text" name="LOGREQ" id="LOGREQ"></output><br>
+		<label>Total RAM Required:</label><output type="text" name="TOTRAM" id="TOTRAM"></output><br>
+
+		<h4><p id="STORAGE">Result for Storage</p></h4>
+		<label>Archive Storage in GBytes:</label><output type="text" name="ARCHSTORE" id="ARCHSTORE"></output><br>
+		<label>In Buffer Storage in GBytes:</label><output type="text" name="BUFFSTORE" id="BUFFSTORE"></output><br>
+		<label>EMM Application Storage in GBytes:</label><output type="text" name="EMMSTORE" id="EMMSTORE"></output><br>
+		<label>Spare Storage in Gytes:</label><output type="text" name="SPARESTORE" id="SPARESTORE"></output><br>
+		<label>Total Storage in TBytes:</label><output type="text" name="TOTSTORAGE" id="TOTSTORAGE"></output> <br>
+		
+		<h4><p id="BLADE">Result for Number of Blades</p></h4>
+		<label><b>F-EMM Blades can be designed for a Capacity of 1000/2000/3000 KBytes/sec</b></label><br><br>
+
+		<label>Size of Simple File Transfer Feeds (Source TMO) in Kbytes per day:</label><output type="text" name="FTFTMOSIZE" id="FTFTMOSIZE"></output><br>
+		<label>Size of Simple File Transfer Feeds (Source Ericsson/AuxDB Fraud/RA/Data Stash) in Kbytes per day:</label><output type="text" name="FTFRASIZE" id="FTFRASIZE"></output><br>
+		<label>Size of Simple File Transfer Feeds (Source Ericsson/AuxDB RSL) in Kbytes per day:</label><output type="text" name="FTFRSLSIZE" id="FTFRSLSIZE"></output><br>
+		<label>Size of Source Ericsson (OM Fraud)/Case Management in Kbytes per day:</label><output type="text" name="CMERICSIZE" id="CMERICSIZE"></output><br>
+		<label>Size of Simple File Transfer Feeds (Source Ericsson) in Kbytes per day:</label><output type="text" name="FTFERICSIZE" id="FTFERICSIZE"></output> <br>
+		<label>Size of Feeds required decoding/processing (Source TMO/Assurant files) in Kbytes per day:</label><output type="text" name="FRDSIZE" id="FRDSIZE"></output><br>
+		<label>Size of Event and Notification Feeds in Kbytes per day:</label><output type="text" name="EVNOTIFSIZE" id="EVNOTIFSIZE"></output><br>
+		<label>Size of Submit Order Feeds(Source TMO-->Targer OM) in Kbytes per day:</label><output type="text" name="SOFTMOSIZE" id="SOFTMOSIZE"></output><br>
+		<label>Size of Submit Order Feeds(Source Ericsson-->Targer OM) in Kbytes per day:</label><output type="text" name="SOFERICSIZE" id="SOFERICSIZE"></output><br>
+		<label>Size of MBC (Source Ericsson-->Targer OM/ESP) in Kbytes per day:</label><output type="text" name="MBCSIZE" id="MBCSIZE"></output> <br>
+		<label>Size of Hawkeye/EMA collection/distribution in Kbytes per day:</label><output type="text" name="HAWKSIZE" id="HAWKSIZE"></output><br>
+		<label>Size of SAP-C Case Management Events in Kbytes per day:</label><output type="text" name="SAPCSIZE" id="SAPCSIZE"></output><br><br>
+
+		<label>Number of Blades for Simple File Transfer Feeds (Source TMO):</label><output type="text" name="FTFTMONO" id="FTFTMONO"></output><br>
+		<label>Number of Blades for Simple File Transfer Feeds (Source Ericsson/AuxDB Fraud/RA/Data Stash):</label><output type="text" name="FTFRANO" id="FTFRANO"></output><br>
+		<label>Number of Blades for Simple File Transfer Feeds (Source Ericsson/AuxDB RSL):</label><output type="text" name="FTFRSLNO" id="FTFRSLNO"></output><br>
+		<label>Number of Blades for Source Ericsson (OM Fraud)/Case Management:</label><output type="text" name="CMERICNO" id="CMERICNO"></output><br>
+		<label>Number of Blades for Simple File Transfer Feeds (Source Ericsson):</label><output type="text" name="FTFERICNO" id="FTFERICNO"></output> <br>
+		<label>Number of Blades for Feeds required decoding/processing (Source TMO/Assurant files):</label><output type="text" name="FRDNO" id="FRDNO"></output><br>
+		<label>Number of Blades for Event and Notification Feeds:</label><output type="text" name="EVNOTIFNO"id="EVNOTIFNO"></output><br>
+		<label>Number of Blades for Submit Order Feeds(Source TMO-->Targer OM):</label><output type="text" name="SOFTMONO" id="SOFTMONO"></output><br>
+		<label>Number of Blades for Submit Order Feeds(Source Ericsson-->Targer OM):</label><output type="text" name="SOFERICNO" id="SOFERICNO"></output><br>
+		<label>Number of Blades for MBC (Source Ericsson-->Targer OM/ESP):</label><output type="text"name="MBCNO" id="MBCNO"></output> <br>
+		<label>Number of Blades for Hawkeye/EMA collection/distribution:</label><output type="text" name="HAWKNO" id="HAWKNO"></output><br>
+		<label>Number of Blades for SAP-C Case Management Events:</label><output type="text" name="SAPCNO" id="SAPCNO"></output><br><br>
+
+		<label>Total Number of Blades:</label><output type="text" name="TOTBLADES" id="TOTBLADES"></output><br>
+		
+
+	</form>   
+
+
+<script src="code_EMM.js"></script> 
+</body> 
+</html> 
